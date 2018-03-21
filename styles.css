@@ -2,6 +2,9 @@
 .scale-box {
   padding: 1em;
   padding-left: 3em;
+
+  width: 600px;
+  border-left: 7px solid #46618c;
 }
 
 /* MDL */

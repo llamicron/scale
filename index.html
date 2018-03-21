@@ -44,15 +44,6 @@
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Scales & Modes</span>
           <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
             <i class="material-icons">more_vert</i>
           </button>
@@ -74,13 +65,31 @@
       <!-- Main -->
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
-          <!-- Wide Box -->
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
 
-          <div v-for="scale in scales" class="scale-box mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <h4>
-              {{ scale.tonic + " " + scale.mode }}
-              <div :id="scale.elementId"></div>
-            </h4>
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Filter</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows="5" id="tags"></textarea>
+                    <label class="mdl-textfield__label" for="sample5">Tags</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+              <!-- Scale Box -->
+              <div v-for="scale in scales" class="scale-box mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <h4>
+                  {{ scale.tonic + " " + scale.mode }}
+                  <div :id="scale.elementId"></div>
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
       </main>

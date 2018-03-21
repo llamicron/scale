@@ -55,10 +55,10 @@ var scales = new Vue({
         var div = document.getElementById(scale.elementId);
         var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
-        renderer.resize(800, 200);
+        renderer.resize(800, 100);
 
         var context = renderer.getContext();
-        var stave = new VF.Stave(0, 0, 600);
+        var stave = new VF.Stave(0, 0, 450);
 
         stave.addClef("treble");
 
