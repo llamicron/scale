@@ -55,6 +55,7 @@ VF = Vex.Flow;
 var scale = new Vue({
   el: "#main",
   data: {
+    originalScales: scales,
     scales: scales,
     filterInput: ""
   },
