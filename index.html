@@ -72,10 +72,10 @@
                 <label class="mdl-textfield__label" for="sample5"></label>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Refresh
+                <a @click="filter" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Filter
                 </a>
-                <a @click="filterInput = ''" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <a @click="clear" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                   Clear
                 </a>
               </div>

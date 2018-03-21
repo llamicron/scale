@@ -48,6 +48,13 @@ scales = [
     notes: ["C/4", "Db/4", "Eb/4", "F/4", "Gb/4", "Ab/4", "Bb/4", "C/5"],
     tags: []
   },
+  {
+    elementId: "g-lydian",
+    tonic: "G",
+    mode: "Lydian",
+    notes: ["G/4", "A/4", "B/4", "C#/5", "D/5", "E/5", "F#/5", "G/5"],
+    tags: []
+  },
 ]
 
 VF = Vex.Flow;
@@ -121,6 +128,39 @@ var scale = new Vue({
       }
       this.filterInput = this.filterInput.trim();
       this.filterInput += " " + tag.trim();
+    },
+
+    scaleHasAllTags(scale, givenTags) {
+      givenTags.forEach(tag => {
+        // if (if the given tag is not in the scale tags) {
+        if (!scale.tags.includes(tag)) {
+          return false;
+        }
+      });
+      return true;
+    },
+
+    clear() {
+      this.filterInput = '';
+      this.scales = this.originalScales.slice();
+    },
+
+    filter() {
+      this.scales = this.originalScales.slice();
+      this.scales = [];
+
+      givenTags = this.filterInput.split(' ');
+
+      givenTags.forEach(givenTag => {
+        for (let index = 0; index < this.originalScales.length; index++) {
+          const scale = this.originalScales[index];
+          if (!scale.tags.includes(givenTag)) {
+            this.scales.splice(index, 1)
+          } else {
+            this.scales.push(scale);
+          }
+        }
+      });
     }
   },
 
