@@ -4,56 +4,64 @@ scales = [
     tonic: "C",
     mode: "Lydian",
     notes: ["C/4", "D/4", "E/4", "F#/4", "G/4", "A/4", "B/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-ionian",
     tonic: "C",
     mode: "Ionian",
     notes: ["C/4", "D/4", "E/4", "F/4", "G/4", "A/4", "B/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-mixolydian",
     tonic: "C",
     mode: "Mixolydian",
     notes: ["C/4", "D/4", "E/4", "F/4", "G/4", "A/4", "Bb/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-dorian",
     tonic: "C",
     mode: "Dorian",
     notes: ["C/4", "D/4", "Eb/4", "F/4", "G/4", "A/4", "Bb/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-aeolian",
     tonic: "C",
     mode: "Aeolian",
     notes: ["C/4", "D/4", "Eb/4", "F/4", "G/4", "Ab/4", "Bb/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-phrygian",
     tonic: "C",
     mode: "Phrygian",
     notes: ["C/4", "Db/4", "Eb/4", "F/4", "G/4", "Ab/4", "Bb/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "c-locrian",
     tonic: "C",
     mode: "Locrian",
     notes: ["C/4", "Db/4", "Eb/4", "F/4", "Gb/4", "Ab/4", "Bb/4", "C/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
   {
     elementId: "g-lydian",
     tonic: "G",
     mode: "Lydian",
     notes: ["G/4", "A/4", "B/4", "C#/5", "D/5", "E/5", "F#/5", "G/5"],
-    tags: []
+    tags: [],
+    visible: true
   },
 ]
 
@@ -145,8 +153,8 @@ var scale = new Vue({
       this.scales = this.originalScales.slice();
     },
 
+    // Why?
     filter() {
-      this.scales = this.originalScales.slice();
       this.scales = [];
 
       givenTags = this.filterInput.split(' ');
@@ -154,10 +162,10 @@ var scale = new Vue({
       givenTags.forEach(givenTag => {
         for (let index = 0; index < this.originalScales.length; index++) {
           const scale = this.originalScales[index];
-          if (!scale.tags.includes(givenTag)) {
-            this.scales.splice(index, 1)
-          } else {
-            this.scales.push(scale);
+          if (scale.tags.includes(givenTag)) {
+            if (!this.scales.includes(scale)) {
+              this.scales.push(scale);
+            }
           }
         }
       });
