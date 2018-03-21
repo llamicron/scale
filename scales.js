@@ -8,43 +8,43 @@ var scales = new Vue({
         elementId: "c-lydian",
         tonic: "C",
         mode: "Lydian",
-        notes: ["C", "D", "E", "F#", "G", "A", "B", "C"]
+        notes: ["C/4", "D/4", "E/4", "F#/4", "G/4", "A/4", "B/4", "C/5"]
       },
       {
         elementId: "c-ionian",
         tonic: "C",
         mode: "Ionian",
-        notes: ["C", "D", "E", "F", "G", "A", "B", "C"]
+        notes: ["C/4", "D/4", "E/4", "F/4", "G/4", "A/4", "B/4", "C/5"]
       },
       {
         elementId: "c-mixolydian",
         tonic: "C",
         mode: "Mixolydian",
-        notes: ["C", "D", "E", "F", "G", "A", "Bb", "C"]
+        notes: ["C/4", "D/4", "E/4", "F/4", "G/4", "A/4", "Bb/4", "C/5"]
       },
       {
         elementId: "c-dorian",
         tonic: "C",
         mode: "Dorian",
-        notes: ["C", "D", "Eb", "F", "G", "A", "Bb", "C"]
+        notes: ["C/4", "D/4", "Eb/4", "F/4", "G/4", "A/4", "Bb/4", "C/5"]
       },
       {
         elementId: "c-aeolian",
         tonic: "C",
         mode: "Aeolian",
-        notes: ["C", "D", "Eb", "F", "G", "Ab", "Bb", "C"]
+        notes: ["C/4", "D/4", "Eb/4", "F/4", "G/4", "Ab/4", "Bb/4", "C/5"]
       },
       {
         elementId: "c-phrygian",
         tonic: "C",
         mode: "Phrygian",
-        notes: ["C", "Db", "Eb", "F", "G", "Ab", "Bb", "C"]
+        notes: ["C/4", "Db/4", "Eb/4", "F/4", "G/4", "Ab/4", "Bb/4", "C/5"]
       },
       {
         elementId: "c-locrian",
         tonic: "C",
         mode: "Locrian",
-        notes: ["C", "Db", "Eb", "F", "Gb", "Ab", "Bb", "C"]
+        notes: ["C/4", "Db/4", "Eb/4", "F/4", "Gb/4", "Ab/4", "Bb/4", "C/5"]
       },
     ]
   },
@@ -64,14 +64,13 @@ var scales = new Vue({
 
         var notes = [];
         scale.notes.forEach(note => {
-          noteName = note + "/4";
           accidental = note[1];
-          note = note[0];
-          newNote = new VF.StaveNote({ clef: "treble", keys: [noteName], duration: "q" });
+          if (accidental == '/') {
+            accidental = false;
+          }
+          console.log(note)
+          newNote = new VF.StaveNote({ clef: "treble", keys: [note], duration: "q" });
           if (accidental) {
-            if (accidental == "♭") {
-              accidental = "b";
-            }
             newNote.addAccidental(0, new VF.Accidental(accidental));
           }
           notes.push(newNote);
