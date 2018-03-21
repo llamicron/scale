@@ -7,6 +7,11 @@
   border-left: 7px solid #46618c;
 }
 
+.tag-chip {
+  margin-right: 7px;
+  cursor: pointer;
+}
+
 /* MDL */
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;

@@ -70,12 +70,20 @@
 
               <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
                 <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text">Filter</h2>
+                  <h2 class="mdl-card__title-text">Filter Tags</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                   <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="5" id="tags"></textarea>
-                    <label class="mdl-textfield__label" for="sample5">Tags</label>
+                    <textarea class="mdl-textfield__input" v-model="filterInput" type="text" rows="5" id="tags"></textarea>
+                    <label class="mdl-textfield__label" for="sample5"></label>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      Refresh
+                    </a>
+                    <a @click="filterInput = ''" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      Clear
+                    </a>
                   </div>
                 </div>
               </div>
@@ -85,9 +93,12 @@
               <!-- Scale Box -->
               <div v-for="scale in scales" class="scale-box mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <h4>
-                  {{ scale.tonic + " " + scale.mode }}
+                  {{ scale.tonic + " " + scale.mode}}
                   <div :id="scale.elementId"></div>
                 </h4>
+                <span @click="addFilter(tag)" class="mdl-chip tag-chip" v-for="tag in scale.tags">
+                  <span class="mdl-chip__text">{{ tag }}</span>
+                </span>
               </div>
             </div>
           </div>
